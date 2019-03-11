@@ -1,0 +1,47 @@
+<p-panel header="Title">
+  <div class="p-grid">
+      <div class="p-col-2">
+        Nome:
+      </div>
+      <div class="p-col-10">
+        <input type="text" pInputText [(ngModel)]="categoria.nome"/>
+      </div>
+      <div class="p-col-2">
+        Icone:
+      </div>
+      <div class="p-col-10">
+        <input type="text" pInputText [(ngModel)]="categoria.icon"/>
+      </div>
+      <div class="p-col-2">
+        Visível Menu:
+      </div>
+      <div class="p-col-10">
+        <p-checkbox [(ngModel)]="categoria.visivelMenu" binary="true"></p-checkbox>
+      </div>
+
+      <div class="p-col-10 p-offset-2">
+        <button pButton label="Adicionar" (click)="adicionar()"></button>
+      </div>
+  </div>
+
+</p-panel>
+<p-table [value]="categorias">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Icone</th>
+      <th>Categoria Superior</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-categoria>
+    <tr>
+      <td>{{categoria.id}}</td>
+      <td>{{categoria.nome}}</td>
+      <td>{{categoria.icon}}</td>
+      <td><span>{{categoria.categoriaSuperior?categoria.categoriaSuperior.nome:''}}</span></td>
+      <td><button pButton type="button" label="Editar" (click)="editar(categoria)"></button></td>
+    </tr>
+  </ng-template>
+</p-table>
+<p-toast></p-toast>
